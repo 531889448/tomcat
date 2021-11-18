@@ -337,7 +337,7 @@ public final class LegacyCookieProcessor extends CookieProcessorBase {
                 buf.append(sameSiteCookiesValue.getValue());
             }
         } else {
-            // Use explict config
+            // Use explicit config
             buf.append("; SameSite=");
             buf.append(cookieSameSite);
         }

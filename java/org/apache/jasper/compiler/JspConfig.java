@@ -48,7 +48,7 @@ public class JspConfig {
     private String defaultIsELIgnored = null;           // unspecified
     private String defaultErrorOnELNotFound = "false";
     private static final String defaultIsScriptingInvalid = null;
-    private String defaultDeferedSyntaxAllowedAsLiteral = null;
+    private String defaultDeferredSyntaxAllowedAsLiteral = null;
     private static final String defaultTrimDirectiveWhitespaces = null;
     private static final String defaultDefaultContentType = null;
     private static final String defaultBuffer = null;
@@ -64,12 +64,12 @@ public class JspConfig {
         // Very, very unlikely but just in case...
         if (ctxt.getEffectiveMajorVersion() < 2) {
             defaultIsELIgnored = "true";
-            defaultDeferedSyntaxAllowedAsLiteral = "true";
+            defaultDeferredSyntaxAllowedAsLiteral = "true";
             return;
         }
         if (ctxt.getEffectiveMajorVersion() == 2) {
             if (ctxt.getEffectiveMinorVersion() < 5) {
-                defaultDeferedSyntaxAllowedAsLiteral = "true";
+                defaultDeferredSyntaxAllowedAsLiteral = "true";
             }
             if (ctxt.getEffectiveMinorVersion() < 4) {
                 defaultIsELIgnored = "true";
@@ -169,7 +169,7 @@ public class JspConfig {
                             defaultErrorOnELNotFound,
                             defaultIsScriptingInvalid,
                             null, null, null,
-                            defaultDeferedSyntaxAllowedAsLiteral,
+                            defaultDeferredSyntaxAllowedAsLiteral,
                             defaultTrimDirectiveWhitespaces,
                             defaultDefaultContentType,
                             defaultBuffer,
@@ -251,7 +251,7 @@ public class JspConfig {
         JspPropertyGroup errorOnELNotFoundMatch = null;
         JspPropertyGroup scriptingInvalidMatch = null;
         JspPropertyGroup pageEncodingMatch = null;
-        JspPropertyGroup deferedSyntaxAllowedAsLiteralMatch = null;
+        JspPropertyGroup deferredSyntaxAllowedAsLiteralMatch = null;
         JspPropertyGroup trimDirectiveWhitespacesMatch = null;
         JspPropertyGroup defaultContentTypeMatch = null;
         JspPropertyGroup bufferMatch = null;
@@ -310,9 +310,9 @@ public class JspConfig {
             if (jp.getPageEncoding() != null) {
                 pageEncodingMatch = selectProperty(pageEncodingMatch, jpg);
             }
-            if (jp.isDeferedSyntaxAllowedAsLiteral() != null) {
-                deferedSyntaxAllowedAsLiteralMatch =
-                    selectProperty(deferedSyntaxAllowedAsLiteralMatch, jpg);
+            if (jp.isDeferredSyntaxAllowedAsLiteral() != null) {
+                deferredSyntaxAllowedAsLiteralMatch =
+                    selectProperty(deferredSyntaxAllowedAsLiteralMatch, jpg);
             }
             if (jp.isTrimDirectiveWhitespaces() != null) {
                 trimDirectiveWhitespacesMatch =
@@ -337,7 +337,7 @@ public class JspConfig {
         String errorOnELNotFound = defaultErrorOnELNotFound;
         String isScriptingInvalid = defaultIsScriptingInvalid;
         String pageEncoding = null;
-        String isDeferedSyntaxAllowedAsLiteral = defaultDeferedSyntaxAllowedAsLiteral;
+        String isDeferredSyntaxAllowedAsLiteral = defaultDeferredSyntaxAllowedAsLiteral;
         String isTrimDirectiveWhitespaces = defaultTrimDirectiveWhitespaces;
         String defaultContentType = defaultDefaultContentType;
         String buffer = defaultBuffer;
@@ -359,9 +359,9 @@ public class JspConfig {
         if (pageEncodingMatch != null) {
             pageEncoding = pageEncodingMatch.getJspProperty().getPageEncoding();
         }
-        if (deferedSyntaxAllowedAsLiteralMatch != null) {
-            isDeferedSyntaxAllowedAsLiteral =
-                deferedSyntaxAllowedAsLiteralMatch.getJspProperty().isDeferedSyntaxAllowedAsLiteral();
+        if (deferredSyntaxAllowedAsLiteralMatch != null) {
+            isDeferredSyntaxAllowedAsLiteral =
+                deferredSyntaxAllowedAsLiteralMatch.getJspProperty().isDeferredSyntaxAllowedAsLiteral();
         }
         if (trimDirectiveWhitespacesMatch != null) {
             isTrimDirectiveWhitespaces =
@@ -381,7 +381,7 @@ public class JspConfig {
 
         return new JspProperty(isXml, isELIgnored, errorOnELNotFound, isScriptingInvalid,
                 pageEncoding, includePreludes, includeCodas,
-                isDeferedSyntaxAllowedAsLiteral, isTrimDirectiveWhitespaces,
+                isDeferredSyntaxAllowedAsLiteral, isTrimDirectiveWhitespaces,
                 defaultContentType, buffer, errorOnUndeclaredNamespace);
     }
 
@@ -464,7 +464,7 @@ public class JspConfig {
         private final String pageEncoding;
         private final Collection<String> includePrelude;
         private final Collection<String> includeCoda;
-        private final String deferedSyntaxAllowedAsLiteral;
+        private final String deferredSyntaxAllowedAsLiteral;
         private final String trimDirectiveWhitespaces;
         private final String defaultContentType;
         private final String buffer;
@@ -473,7 +473,7 @@ public class JspConfig {
         public JspProperty(String isXml, String elIgnored, String errorOnELNotFound,
                 String scriptingInvalid, String pageEncoding,
                 Collection<String> includePrelude, Collection<String> includeCoda,
-                String deferedSyntaxAllowedAsLiteral,
+                String deferredSyntaxAllowedAsLiteral,
                 String trimDirectiveWhitespaces,
                 String defaultContentType,
                 String buffer,
@@ -486,7 +486,7 @@ public class JspConfig {
             this.pageEncoding = pageEncoding;
             this.includePrelude = includePrelude;
             this.includeCoda = includeCoda;
-            this.deferedSyntaxAllowedAsLiteral = deferedSyntaxAllowedAsLiteral;
+            this.deferredSyntaxAllowedAsLiteral = deferredSyntaxAllowedAsLiteral;
             this.trimDirectiveWhitespaces = trimDirectiveWhitespaces;
             this.defaultContentType = defaultContentType;
             this.buffer = buffer;
@@ -521,8 +521,8 @@ public class JspConfig {
             return includeCoda;
         }
 
-        public String isDeferedSyntaxAllowedAsLiteral() {
-            return deferedSyntaxAllowedAsLiteral;
+        public String isDeferredSyntaxAllowedAsLiteral() {
+            return deferredSyntaxAllowedAsLiteral;
         }
 
         public String isTrimDirectiveWhitespaces() {

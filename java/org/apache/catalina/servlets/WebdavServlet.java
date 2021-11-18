@@ -1563,7 +1563,7 @@ public class WebdavServlet extends DefaultServlet {
         int protocolIndex = destinationPath.indexOf("://");
         if (protocolIndex >= 0) {
             // if the Destination URL contains the protocol, we can safely
-            // trim everything upto the first "/" character after "://"
+            // trim everything up to the first "/" character after "://"
             int firstSeparator =
                 destinationPath.indexOf('/', protocolIndex + 4);
             if (firstSeparator < 0) {

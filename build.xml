@@ -39,7 +39,7 @@
   <!-- Check Ant Version -->
   <fail message="Ant version ${ant.version.required} or newer is required (${ant.version} is installed)">
     <condition>
-      <not><antversion atleast="${ant.version.required}" /></not>
+      <not><antversion at least="${ant.version.required}" /></not>
     </condition>
   </fail>
 
