@@ -922,7 +922,7 @@
     <!-- Sync is not protecting these fields -->
     <Class name="org.apache.jasper.compiler.JspConfig"/>
     <Or>
-      <Field name="defaultDeferedSyntaxAllowedAsLiteral" />
+      <Field name="defaultDeferredSyntaxAllowedAsLiteral" />
       <Field name="defaultIsELIgnored" />
     </Or>
     <Bug pattern="IS2_INCONSISTENT_SYNC"/>
